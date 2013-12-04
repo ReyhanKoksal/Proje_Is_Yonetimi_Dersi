@@ -133,6 +133,9 @@ Private Sub ogr_sicil_ekle_btn_Click(ByVal sender As System.Object, ByVal e As S
 
 
 // Ogrenci_bilgi vb (Class tanımlamaları)
+
+Imports System.Data.SqlClient
+
 Public Class ogrenci_bilgi
     Private no As Integer
     Private ad As String
@@ -147,4 +150,67 @@ Public Class ogrenci_bilgi
     Private email As String
     Private adres As String
     Private bolum As Integer
+    
+    Private sql As String
+    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje; trusted_connection=yes;")
+    Private com As New SqlCommand()
+    Sub kontrol()
+        ogrenci_frm.bilgi_ata()
+        no = CInt(ogrenci_frm.sicil_no_txt.Text)
+        sql = "select * from ogrenci_sicil_tbl where numarasi = '" & no & "'"
+        baglan()
+        Dim satir1 As DataRow
+        Dim adapt As New SqlDataAdapter(sql, baglanti)
+        Dim ds As New DataSet("ds")
+        adapt.Fill(ds, "Kontrol")
+//çağrı
+
+    End Sub
+    
+    Sub baglan()
+        com.Connection = baglanti
+        com.CommandText = sql
+        baglanti.Open()
+        com.ExecuteNonQuery()
+        baglanti.Close()
+    End Sub
+    Sub listele()
+        sql = "select * from ogrenci_sicil_tbl"
+        Dim adapt As New SqlDataAdapter(sql, baglanti)
+        Dim ds As New DataSet()
+        adapt.Fill(ds, "ogr_liste")
+        ogrenci_frm.ogrenci_sicil_grd.DataSource = ds.Tables("ogr_liste")
+
+//çağrı
+
+    End Sub
+
+Sub ekle()
+        sql = "INSERT INTO ogrenci_sicil_tbl(numarasi,adi,soyadi,cinsiyeti,d_tarihi,adresi,ili,ilcesi,p_kodu,ev_tel,cep_tel,email,b_kodu) values ('" & no & "','" & ad & "','" & soyad & "','" & cinsiyet & "','" & dogtar & "','" & adres & "','" & il & "','" & ilce & "','" & postakodu & "','" & evtel & "','" & ceptel & "','" & email & "','" & bolum & "')"
+        baglan()
+        listele()
+    End Sub
+
+    Sub guncelle()
+        sql = "update ogrenci_sicil_tbl set numarasi = '" & no & "', adi='" & ad & "', soyadi='" & soyad & "', cinsiyeti='" & cinsiyet & "', d_tarihi='" & dogtar & "', adresi='" & adres & "', ili='" & il & "', ilcesi='" & ilce & "', p_kodu='" & postakodu & "', ev_tel='" & evtel & "', cep_tel='" & ceptel & "', email='" & email & "',b_kodu='" & bolum & "' where numarasi = '" & no & "'"
+        baglan()
+        listele()
+    End Sub
+
+    Sub sil()
+        sql = "delete from ogrenci_sicil_tbl where numarasi='" & no & "'"
+        baglan()
+        listele()
+    End Sub
+
+    Sub ara()
+        sql = "select * from ogrenci_sicil_tbl where numarasi='" & no & "'"
+        Dim adapt As New SqlDataAdapter(sql, baglanti)
+        Dim ds As New DataSet()
+        adapt.Fill(ds, "Ogrenci Listesi")
+        ogrenci_frm.ogrenci_sicil_grd.DataSource = ds.Tables("Ogrenci Listesi")
+        ogrenci_frm.ogrenci_sicil_grd.Refresh()
+
+    End Sub
+
 
