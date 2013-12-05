@@ -1,4 +1,4 @@
-Public Class ogrenci_bilgi
+ Public Class ogrenci_bilgi
     Private no As Integer
     Private ad As String
     Private soyad As String
