@@ -1,6 +1,5 @@
 
 
-
 Public Class ogrenci_frm
     Dim ogrenci As New ogrenci_bilgi
 
@@ -108,20 +107,4 @@ Private Sub ogr_sicil_ekle_btn_Click(ByVal sender As System.Object, ByVal e As S
         ogrenci.cikis()
     End Sub
 
-
-// Ogrenci_bilgi vb (Class tanımlamaları)
-Public Class ogrenci_bilgi
-    Private no As Integer
-    Private ad As String
-    Private soyad As String
-    Private cinsiyet As String
-    Private dogtar As String
-    Private il As String
-    Private ilce As String
-    Private postakodu As String
-    Private evtel As String
-    Private ceptel As String
-    Private email As String
-    Private adres As String
-    Private bolum As Integer
 
