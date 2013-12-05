@@ -1,4 +1,4 @@
--//(ogrencı_frm.vb içi )-
+
 
 
 Public Class ogrenci_frm
