@@ -1,4 +1,4 @@
- Public Class ogrenci_bilgi
+Public Class ogrenci_bilgi
     Private no As Integer
     Private ad As String
     Private soyad As String
@@ -12,3 +12,5 @@
     Private email As String
     Private adres As String
     Private bolum As Integer
+
+'Public nosu As Integer
