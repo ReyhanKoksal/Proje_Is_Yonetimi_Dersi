@@ -106,4 +106,19 @@ Public Class ogrenci_frm
         ogrenci.cikis()
     End Sub
 
+Private Sub veli_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles veli_ekle_btn.Click
+        If IsNumeric(veli_ogr_no_txt.Text) = False Then
+            MsgBox("Lütfen geçerli bir öğrenci numarası giriniz!")
+        ElseIf tc_txt.Text = "" Then
+            MsgBox("TC numarası boş geçilemez!!!", MsgBoxStyle.Exclamation)
+            tc_txt.Focus()
+            tc_txt.Text = ""
+        ElseIf (veli_ad_txt.Text = "") Then
+            MsgBox("Veli Ad Alanı Boş Geçilemez!!!", MsgBoxStyle.Exclamation)
+            veli_ad_txt.Focus()
+            veli_ad_txt.Text = ""
+        ElseIf (veli_soyad_txt.Text = "") Then
+            MsgBox("Veli SoyAd Alanı Boş Geçilemez!!!", MsgBoxStyle.Exclamation)
+            veli_soyad_txt.Focus()
+            veli_soyad_txt.Text = ""
 
