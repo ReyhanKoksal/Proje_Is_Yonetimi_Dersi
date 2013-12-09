@@ -1,7 +1,7 @@
 Public Class ogrenci_frm
     Dim ogrenci As New ogrenci_bilgi
     Dim veli As New veli_bilgileri
-Dim dp As New prog
+    Dim dp As New prog
 Public et As Integer
     Public nokta As Integer
     Public et1 As Integer
@@ -33,6 +33,13 @@ Sub bilgi_ata()
         devam.devamsizlik_tarihi = devamsizlik_tarihi_dtp.Value.ToString
         devam.devamsizlik_turu = devamsizlik_turu_cmb.SelectedItem.ToString
     End Sub
+    Private Sub prog_kodu_txt_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles prog_kodu_txt.TextChanged
+        If prog_kodu_txt.Text = "" Then
+        Else
+            dp.isim_ata()
+        End If
+    End Sub
+
 
  Private Sub ogr_sicil_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ogr_sicil_ekle_btn.Click
         If sicil_no_txt.Text = "" Then
