@@ -1,7 +1,7 @@
 Public Class ogrenci_frm
     Dim ogrenci As New ogrenci_bilgi
     Dim veli As New veli_bilgileri
-
+Dim dp As New prog
 Public et As Integer
     Public nokta As Integer
     Public et1 As Integer
