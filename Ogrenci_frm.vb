@@ -1,11 +1,44 @@
 Public Class ogrenci_frm
     Dim ogrenci As New ogrenci_bilgi
     Dim veli As New veli_bilgileri
-
-Public et As Integer
+    Dim dp As New prog
+  Public et As Integer
     Public nokta As Integer
     Public et1 As Integer
     Public nokta1 As Integer
+    Sub v_bilgi_ata()
+        veli.o_no = CInt(veli_ogr_no_txt.Text)
+        veli.v_no = tc_txt.Text
+        veli.v_ad = veli_ad_txt.Text
+        veli.v_soyad = veli_soyad_txt.Text
+        veli.v_adres = veli_adres_txt.Text
+        veli.v_cep_tel = veli_cep_txt.Text
+        veli.v_geliri = veli_geliri_txt.Text
+        veli.v_il = veli_il_txt.Text
+        veli.v_ilce = veli_ilce_txt.Text
+        veli.v_posta = veli_posta_kodu_txt.Text
+        veli.v_yakinligi = yakinlik_txt.Text
+        veli.v_mail = veli_email_txt.Text
+        veli.v_is_il = veli_is_ili_txt.Text
+        veli.v_is_ilce = veli_is_ilce_txt.Text
+        veli.v_is_posta = veli_is_posta_kodu_txt.Text
+        veli.v_is_fax = veli_is_fax_txt.Text
+        veli.v_is_adres = veli_is_adresi_txt.Text
+        veli.v_meslegi = veli_meslek_txt.Text
+        veli.v_tel = veli_ev_tel_txt.Text
+        veli.v_is_tel = veli_is_tel_txt.Text
+    End Sub
+    Sub s_bilgi_ata()
+        sp.senet_ogr_nosu = CInt(senet_ogr_no_txt.Text)
+        sp.k_ucreti = CInt(senet_k_ucret_txt.Text)
+        sp.senet_indirimi = CInt(senet_indirim_txt.Text)
+        sp.top_senet_tutari = Val(CInt(sp.k_ucreti) - CInt(sp.senet_indirimi))
+        sp.tarihi = DateTimePicker1.Value.ToString
+        sp.i_v_tarihi = DateTimePicker2.Value.ToString
+        sp.v_sayisi = CInt(senet_vadesay_txt.Text)
+        sp.tutar = Val(CInt(sp.top_senet_tutari) / CInt(sp.v_sayisi))
+    End Sub
+
 Sub bilgi_ata()
         ogrenci.o_numarası = CInt(sicil_no_txt.Text)
         ogrenci.o_adi = sicil_ad_txt.Text
@@ -33,6 +66,13 @@ Sub bilgi_ata()
         devam.devamsizlik_tarihi = devamsizlik_tarihi_dtp.Value.ToString
         devam.devamsizlik_turu = devamsizlik_turu_cmb.SelectedItem.ToString
     End Sub
+    Private Sub prog_kodu_txt_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles prog_kodu_txt.TextChanged
+        If prog_kodu_txt.Text = "" Then
+        Else
+            dp.isim_ata()
+        End If
+    End Sub
+
 
  Private Sub ogr_sicil_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ogr_sicil_ekle_btn.Click
         If sicil_no_txt.Text = "" Then
