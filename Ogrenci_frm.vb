@@ -2,6 +2,37 @@ Public Class ogrenci_frm
     Dim ogrenci As New ogrenci_bilgi
     Dim veli As New veli_bilgileri
 
+Public et As Integer
+    Public nokta As Integer
+    Public et1 As Integer
+    Public nokta1 As Integer
+Sub bilgi_ata()
+        ogrenci.o_numarası = CInt(sicil_no_txt.Text)
+        ogrenci.o_adi = sicil_ad_txt.Text
+        ogrenci.o_soyadi = sicil_soyad_txt.Text
+        If sicil_erkek_rd.Checked Then
+            ogrenci.o_cinsiyeti = "Erkek"
+        Else
+            ogrenci.o_cinsiyeti = "Kız"
+        End If
+        ogrenci.o_dogumtarihi = sicil_dog_tar_dtp.Value.ToString
+        ogrenci.o_adresi = sicil_adres_txt.Text
+        ogrenci.o_ili = sicil_il_txt.Text
+        ogrenci.o_ilcesi = sicil_ilcesi_txt.Text
+        ogrenci.o_posta_kodu = sicil_posta_txt.Text
+        ogrenci.o_evtelefonu = sicil_evtel_txt.Text
+        ogrenci.o_ceptelefonu = sicil_ceptel_txt.Text
+        ogrenci.o_email = sicil_email_txt.Text
+        ogrenci.o_bolumu = CInt(ogr_sicil_bolum_txt.SelectedItem)
+    End Sub
+    Sub d_bilgi_ata()
+        devam.ogrenci_nosu = CInt(dev_ogr_no_txt.Text)
+        devam.adi = dev_adi_txt.Text
+        devam.soyadi = dev_soyadi_txt.Text
+        devam.sinifi = dev_sinifi_txt.Text
+        devam.devamsizlik_tarihi = devamsizlik_tarihi_dtp.Value.ToString
+        devam.devamsizlik_turu = devamsizlik_turu_cmb.SelectedItem.ToString
+    End Sub
 
  Private Sub ogr_sicil_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ogr_sicil_ekle_btn.Click
         If sicil_no_txt.Text = "" Then
