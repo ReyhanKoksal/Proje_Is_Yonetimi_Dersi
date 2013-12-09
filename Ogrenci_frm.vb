@@ -2,7 +2,11 @@ Public Class ogrenci_frm
     Dim ogrenci As New ogrenci_bilgi
     Dim veli As New veli_bilgileri
     Dim dp As New prog
-Public et As Integer
+    Dim sp As New senet
+    Dim devam As New Devamsizlik
+    Dim op As New odemeler
+    Public senetno As Integer
+    Public et As Integer
     Public nokta As Integer
     Public et1 As Integer
     Public nokta1 As Integer
@@ -305,5 +309,58 @@ Private Sub veli_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System
 
     Private Sub veli_listele_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles veli_listele_btn.Click
         veli.listele()
+    End Sub
+
+Private Sub programi_goruntule_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles programi_goruntule_btn.Click
+        If Not prog_gunler_txt.SelectedItem = "" Then
+            If IsNumeric(prog_ogr_no_txt.Text) = True Then
+                dp.listele()
+            Else
+                MsgBox("Lütfen geçerli bir öğrenci numarası giriniz!")
+            End If
+        Else
+            MsgBox("Lütfen gün seçiniz!")
+
+        End If
+    End Sub
+
+
+    Private Sub prog_kodu_txt_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles prog_kodu_txt.TextChanged
+        If prog_kodu_txt.Text = "" Then
+        Else
+            dp.isim_ata()
+        End If
+    End Sub
+    
+    Private Sub senet_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_ekle_btn.Click
+        If IsNumeric(senet_ogr_no_txt.Text) = True Then
+            sp.kontrol()
+        Else
+            MsgBox("Lütfen geçerli bir öğrenci numarası giriniz!")
+        End If
+    End Sub
+
+    Private Sub senet_cikis_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_cikis_btn.Click
+        sp.cikis()
+    End Sub
+
+    Private Sub senet_listele_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_listele_btn.Click
+        sp.listele()
+    End Sub
+
+    Private Sub senet_sil_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_sil_btn.Click
+        sp.sil()
+    End Sub
+
+    Private Sub senet_guncelle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_guncelle_btn.Click
+        sp.guncelle()
+    End Sub
+
+    Private Sub senet_ara_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_ara_btn.Click
+        sp.ara()
+    End Sub
+
+    Private Sub senet_temizle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_temizle_btn.Click
+        sp.temizle()
     End Sub
 
