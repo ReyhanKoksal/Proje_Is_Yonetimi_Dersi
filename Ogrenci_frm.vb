@@ -2,7 +2,7 @@ Public Class ogrenci_frm
     Dim ogrenci As New ogrenci_bilgi
     Dim veli As New veli_bilgileri
 
-
+fonksıyon
  Private Sub ogr_sicil_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ogr_sicil_ekle_btn.Click
         If sicil_no_txt.Text = "" Then
             MsgBox("Öğrenci Numarası Boş Geçilemez!!!", MsgBoxStyle.Exclamation)
