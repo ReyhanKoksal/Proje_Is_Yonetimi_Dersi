@@ -312,4 +312,25 @@ Private Sub veli_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System
     Private Sub veli_listele_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles veli_listele_btn.Click
         veli.listele()
     End Sub
+        Private Sub programi_goruntule_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles programi_goruntule_btn.Click
+        If Not prog_gunler_txt.SelectedItem = "" Then
+            If IsNumeric(prog_ogr_no_txt.Text) = True Then
+                dp.listele()
+            Else
+                MsgBox("Lütfen geçerli bir öğrenci numarası giriniz!")
+            End If
+        Else
+            MsgBox("Lütfen gün seçiniz!")
+
+        End If
+    End Sub
+
+
+    Private Sub prog_kodu_txt_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles prog_kodu_txt.TextChanged
+        If prog_kodu_txt.Text = "" Then
+        Else
+            dp.isim_ata()
+        End If
+    End Sub
+
 
