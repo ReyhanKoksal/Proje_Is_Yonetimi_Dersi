@@ -2,10 +2,16 @@ Public Class ogrenci_frm
     Dim ogrenci As New ogrenci_bilgi
     Dim veli As New veli_bilgileri
     Dim dp As New prog
-Public et As Integer
+    Public et As Integer
     Public nokta As Integer
     Public et1 As Integer
     Public nokta1 As Integer
+    Dim dp As New prog
+    Dim sp As New senet
+    Dim devam As New Devamsizlik
+    Dim op As New odemeler
+    Public senetno As Integer
+
     Sub v_bilgi_ata()
         veli.o_no = CInt(veli_ogr_no_txt.Text)
         veli.v_no = tc_txt.Text
