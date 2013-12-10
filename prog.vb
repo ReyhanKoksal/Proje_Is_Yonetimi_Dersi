@@ -44,7 +44,7 @@ Public Class prog
             soyad = satir1("soyadi").ToString
             derskodu = satir1("b_kodu").ToString
 
-            // çağrı
+            //çağrı
 
         End Try
 
