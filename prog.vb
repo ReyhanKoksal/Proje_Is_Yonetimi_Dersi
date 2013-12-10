@@ -44,7 +44,19 @@ Public Class prog
             soyad = satir1("soyadi").ToString
             derskodu = satir1("b_kodu").ToString
 
-            // çağrı
+                        ogrenci_frm.prog_ogr_adi_txt.Text = ad
+            ogrenci_frm.prog_ogr_soyadi_txt.Text = soyad
+            ogrenci_frm.prog_kodu_txt.Text = derskodu
+        Catch
+            ogrenci_frm.prog_ogr_adi_txt.Text = ""
+            ogrenci_frm.prog_ogr_soyadi_txt.Text = ""
+            ogrenci_frm.prog_kodu_txt.Text = ""
+            ogrenci_frm.prog_adi_txt.Text = ""
+            MsgBox("Lütfen geçerli değerler giriniz!")
+            ogrenci_frm.prog_ogr_no_txt.Focus()
+        Finally
+            baglan()
+
 
         End Try
 
