@@ -1,7 +1,7 @@
 Imports System.Data.SqlClient
 
 Public Class prog
-    Private g As String
+Private g As String
     Private gun As String
     Public prog_o_no As Integer
     Public kod As String
