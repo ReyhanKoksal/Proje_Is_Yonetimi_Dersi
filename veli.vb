@@ -19,3 +19,6 @@ Public Class veli_bilgileri
     Private veli_is_il As String
     Private veli_is_posta As String
     Private veli_mail As String
+    Public no As String
+    Public ad As String
+    Public soyad As String
