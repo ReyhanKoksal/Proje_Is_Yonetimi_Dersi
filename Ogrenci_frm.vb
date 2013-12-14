@@ -329,4 +329,36 @@ Private Sub programi_goruntule_btn_Click(ByVal sender As System.Object, ByVal e 
             dp.isim_ata()
         End If
     End Sub
+    Private Sub senet_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_ekle_btn.Click
+        If IsNumeric(senet_ogr_no_txt.Text) = True Then
+            sp.kontrol()
+        Else
+            MsgBox("Lütfen geçerli bir öğrenci numarası giriniz!")
+        End If
+    End Sub
+
+    Private Sub senet_cikis_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_cikis_btn.Click
+        sp.cikis()
+    End Sub
+
+    Private Sub senet_listele_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_listele_btn.Click
+        sp.listele()
+    End Sub
+
+    Private Sub senet_sil_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_sil_btn.Click
+        sp.sil()
+    End Sub
+
+    Private Sub senet_guncelle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_guncelle_btn.Click
+        sp.guncelle()
+    End Sub
+
+    Private Sub senet_ara_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_ara_btn.Click
+        sp.ara()
+    End Sub
+
+    Private Sub senet_temizle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_temizle_btn.Click
+        sp.temizle()
+    End Sub
+
 
