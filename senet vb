@@ -1,0 +1,13 @@
+Public Class senet
+    Private senet_o_no As Integer
+    Private kurs_ucreti As Integer
+    Private indirim As Integer
+    Private top_s_tutari As Integer
+    Private tarih As String
+    Private ilk_vade_tarihi As String
+    Private vade_sayisi As Integer
+    Private tutari As Double
+
+    Private no As Integer
+    Private ad As String
+    Private soyad As String
