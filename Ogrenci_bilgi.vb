@@ -12,3 +12,7 @@
     Private email As String
     Private adres As String
     Private bolum As Integer
+    
+    Private sql As String
+    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje; trusted_connection=yes;")
+    Private com As New SqlCommand()
