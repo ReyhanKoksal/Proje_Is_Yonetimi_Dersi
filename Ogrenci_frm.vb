@@ -7,7 +7,7 @@ Public Class ogrenci_frm
     Public nokta1 As Integer
     Dim dp As New prog
     Dim sp As New senet
-    
+    Dim devam As New Devamsizlik
     
     Sub v_bilgi_ata()
         veli.o_no = CInt(veli_ogr_no_txt.Text)
@@ -359,6 +359,35 @@ Private Sub programi_goruntule_btn_Click(ByVal sender As System.Object, ByVal e 
 
     Private Sub senet_temizle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles senet_temizle_btn.Click
         sp.temizle()
+    End Sub
+Private Sub dev_sinifii_no_txt_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles dev_sinifii_no_txt.TextChanged
+        If dev_sinifii_no_txt.Text = "" Then
+        Else
+            devam.isim_ata()
+        End If
+    End Sub
+
+    Private Sub devamsizlik_ekle_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles devamsizlik_ekle_btn.Click
+        If IsNumeric(prog_ogr_no_txt.Text) = True Then
+            d_bilgi_ata()
+            devam.kontrol()
+
+        Else
+            MsgBox("Geçerli bir öğrenci numarası giriniz!1")
+        End If
+            End Sub
+
+    Private Sub devamsizlik_ara_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles devamsizlik_ara_btn.Click
+        d_bilgi_ata()
+        devam.ara()
+    End Sub
+
+    Private Sub devamsizlik_listele_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles devamsizlik_listele_btn.Click
+        devam.listele()
+    End Sub
+
+    Private Sub devamsizlik_cikis_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles devamsizlik_cikis_btn.Click
+        devam.cikis()
     End Sub
 
 
