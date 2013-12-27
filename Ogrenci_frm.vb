@@ -8,6 +8,9 @@ Public Class ogrenci_frm
     Dim dp As New prog
     Dim sp As New senet
     Dim devam As New Devamsizlik
+    Dim op As New odemeler
+    Public senetno As Integer
+
     
     Sub v_bilgi_ata()
         veli.o_no = CInt(veli_ogr_no_txt.Text)
@@ -389,5 +392,118 @@ Private Sub dev_sinifii_no_txt_TextChanged(ByVal sender As Object, ByVal e As Sy
     Private Sub devamsizlik_cikis_btn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles devamsizlik_cikis_btn.Click
         devam.cikis()
     End Sub
+        Private Sub odemeler_liste_CellMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles odemeler_liste.CellMouseClick
+
+        Dim senetvadesi As Integer
+        Dim odemetarih As String
+        Dim kalanborc As Integer
+        Dim senettutarı As Integer
+        Dim tutar As Integer
+
+        senetno = odemeler_liste.SelectedCells(5).Value
+        senetvadesi = odemeler_liste.SelectedCells(7).Value
+        odemetarih = odemeler_liste.SelectedCells(4).Value.ToString
+        senettutarı = odemeler_liste.SelectedCells(3).Value
+        tutar = odemeler_liste.SelectedCells(8).Value
+        kalanborc = senettutarı - (tutar * senetno)
+
+        odeme_senet_no_txt.Text = senetno
+        odeme_senet_vadesi_lbl.Text = senetvadesi
+        vade_son_odeme_tarihi_lbl.Text = odemetarih
+        odeme_kalan_borc_lbl.Text = kalanborc
+        odeme_senet_tutarı_lbl.Text = senettutarı
+        odeme_odenmesi_gereken_tutar_lbl.Text = tutar
+    End Sub
+
+    Private Sub odemeyi_kesinleştir_cmd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles odemeyi_kesinleştir_cmd.Click
+        If IsNumeric(odemeler_ogr_no_txt.Text) = False Then
+            MsgBox("Lütfen geçerli bir öğrenci numarası giriniz!")
+        Else
+            op.odeme_update()
+        End If
+    End Sub
+    Private Sub veli_ogr_no_txt_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles veli_ogr_no_txt.LostFocus
+        If veli_ogr_no_txt.Text <> "" Then
+            veli.o_no = CInt(veli_ogr_no_txt.Text)
+            veli.textaktar()
+        Else
+            MsgBox("Lütfen geçerli bir değer giriniz")
+            veli_ad_txt.Text = ""
+            veli_soyad_txt.Text = ""
+            veli_ogr_no_txt.Focus()
+        End If
+    End Sub
+
+    Private Sub prog_ogr_no_txt_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles prog_ogr_no_txt.LostFocus
+        If prog_ogr_no_txt.Text <> "" Then
+            dp.ogrenci_nosu = prog_ogr_no_txt.Text
+            dp.textaktar()
+        Else
+            MsgBox("Lütfen geçerli bir değer giriniz")
+            prog_ogr_adi_txt.Text = ""
+            prog_ogr_soyadi_txt.Text = ""
+            prog_adi_txt.Text = ""
+            prog_kodu_txt.Text = ""
+            prog_ogr_no_txt.Focus()
+        End If
+    End Sub
+
+    Private Sub senet_ogr_no_txt_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles senet_ogr_no_txt.LostFocus
+        If senet_ogr_no_txt.Text <> "" Then
+            sp.senet_ogr_nosu = CInt(senet_ogr_no_txt.Text)
+            sp.textaktar()
+        Else
+            MsgBox("Lütfen geçerli bir değer giriniz")
+            senet_ogr_ad_txt.Text = ""
+            senet_ogr_soyad_txt.Text = ""
+            prog_ogr_no_txt.Focus()
+        End If
+    End Sub
+
+    Private Sub dev_ogr_no_txt_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles dev_ogr_no_txt.LostFocus
+        If dev_ogr_no_txt.Text <> "" Then
+            devam.ogrenci_nosu = dev_ogr_no_txt.Text
+            devam.textaktar()
+        Else
+            MsgBox("Lütfen geçerli bir değer giriniz")
+            dev_ogr_no_txt.Focus()
+        End If
+    End Sub
+    Private Sub veli_email_txt_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles veli_email_txt.TextChanged
+        If (veli_email_txt.Text.EndsWith("@") = True) Then
+            et1 = et1 + 1
+        End If
+        If (veli_email_txt.Text.EndsWith(".") = True) Then
+            nokta1 = 1
+        End If
+    End Sub
+
+
+    Private Sub sicil_email_txt_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles sicil_email_txt.TextChanged
+        If (sicil_email_txt.Text.EndsWith("@") = True) Then
+            et = et + 1
+        End If
+        If (sicil_email_txt.Text.EndsWith(".") = True) Then
+            nokta = 1
+        End If
+    End Sub
+
+    Private Sub odemeler_ogr_no_txt_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles odemeler_ogr_no_txt.LostFocus
+        If odemeler_ogr_no_txt.Text = "" Then
+            MsgBox("Lütfen geçerli bir öğrenci numarası giriniz!")
+            odeme_ogr_adi_txt.Text = ""
+            odeme_ogr_soyadi_txt.Text = ""
+            odemeler_ogr_no_txt.Focus()
+        Else
+            op.odeme_ogr_nosu = odemeler_ogr_no_txt.Text
+            op.textaktar()
+            op.vericek()
+
+        End If
+    End Sub
+
+End Class
+
+
 
 
