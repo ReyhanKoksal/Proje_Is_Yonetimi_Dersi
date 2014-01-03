@@ -31,8 +31,33 @@
         adapt.Fill(ds, "ogr_liste")
         ogrenci_frm.ogrenci_sicil_grd.DataSource = ds.Tables("ogr_liste")
         
+       ogrenci_frm.ogrenci_sicil_grd.Refresh()
+        ogrenci_frm.ogrenci_sicil_grd.Columns(0).HeaderText = "Numarası"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(1).HeaderText = "Adı"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(2).HeaderText = "Soyadı"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(3).HeaderText = "Cinsiyeti"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(4).HeaderText = "Doğum Tarihi"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(5).HeaderText = "Adresi"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(6).HeaderText = "İli"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(7).HeaderText = "İlçesi"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(8).HeaderText = "Posta Kodu"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(9).HeaderText = "Ev Telefonu"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(10).HeaderText = "Cep Telefonu"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(11).HeaderText = "E-mail"
+        ogrenci_frm.ogrenci_sicil_grd.Columns(12).HeaderText = "Bölüm Kodu"
+    End Sub
+    Sub temizle()
+        ogrenci_frm.sicil_no_txt.Text = ""
+        ogrenci_frm.sicil_ad_txt.Text = ""
+        ogrenci_frm.sicil_soyad_txt.Text = ""
+        ogrenci_frm.sicil_adres_txt.Text = ""
+        ogrenci_frm.sicil_il_txt.Text = ""
+        ogrenci_frm.sicil_ilcesi_txt.Text = ""
+        ogrenci_frm.sicil_posta_txt.Text = ""
+        ogrenci_frm.sicil_evtel_txt.Text = ""
+        ogrenci_frm.sicil_ceptel_txt.Text = ""
+        ogrenci_frm.sicil_email_txt.Text = ""
         
-        //çağrı
         
     End Sub
      Sub ekle()
