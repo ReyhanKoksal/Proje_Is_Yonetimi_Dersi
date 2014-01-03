@@ -28,7 +28,7 @@ Public Class personel_bilgi
     Private personel_sayfa_nosu As String
     Public no As Integer
     Private sql As String
-    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje; trusted_connection=yes;")
+    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje_dershane; trusted_connection=yes;")
     Private com As New SqlCommand()
 
 
