@@ -15,7 +15,7 @@ Public Class senet
     Private soyad As String
     
     Private sql As String
-    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje; trusted_connection=yes;")
+    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje_dershane; trusted_connection=yes;")
     Private com As New SqlCommand()
     
     
@@ -56,6 +56,11 @@ Public Class senet
 
     End Sub
     
+     Sub temizle()
+     //çağrı
+     End Sub
+    
+    
      Sub sil()
         sql = "delete from senet_tbl where ogr_no = '" & senet_o_no & "'"
         baglan()
@@ -85,7 +90,7 @@ Public Class senet
             
             baglan()
         
-   //çağrı
+   //çağrı try catch olayları
    
     End Sub
     
@@ -107,7 +112,10 @@ Public Class senet
             ekle()
         End Try
         
+ 
     End Sub
+    
+     // değişken tanımlamalrı çağrı
     
     End Class
 
