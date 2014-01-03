@@ -51,10 +51,11 @@ Public Class odemeler
         
             baglan()
         
-// çağrı
+        // çağrı try catch kontrolleri
 
 
     End Sub
     
+    // çağrı değişken atama
     
     End Class
