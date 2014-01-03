@@ -40,10 +40,30 @@ Public Class veli_bilgileri
     
     Sub temizle() 
     
-    //çağrı
-    
+ ogrenci_frm.ogrenci_adi_txt.Text = ""
+        ogrenci_frm.ogrenci_soyadi_txt.Text = ""
+        ogrenci_frm.veli_ogr_no_txt.Text = ""
+        ogrenci_frm.tc_txt.Text = ""
+        ogrenci_frm.veli_ad_txt.Text = ""
+        ogrenci_frm.veli_soyad_txt.Text = ""
+        ogrenci_frm.veli_adres_txt.Text = ""
+        ogrenci_frm.veli_cep_txt.Text = ""
+        ogrenci_frm.veli_geliri_txt.Text = ""
+        ogrenci_frm.veli_il_txt.Text = ""
+        ogrenci_frm.veli_ilce_txt.Text = ""
+        ogrenci_frm.veli_posta_kodu_txt.Text = ""
+        ogrenci_frm.yakinlik_txt.Text = ""
+        ogrenci_frm.veli_email_txt.Text = ""
+        ogrenci_frm.veli_is_ili_txt.Text = ""
+        ogrenci_frm.veli_is_ilce_txt.Text = ""
+        ogrenci_frm.veli_is_posta_kodu_txt.Text = ""
+        ogrenci_frm.veli_is_fax_txt.Text = ""
+        ogrenci_frm.veli_is_adresi_txt.Text = ""
+        ogrenci_frm.veli_meslek_txt.Text = ""
+        ogrenci_frm.veli_ev_tel_txt.Text = ""
+        ogrenci_frm.veli_is_tel_txt.Text = ""
     End Sub
-
+    
     Sub textaktar()
         Try
             sql = "SELECT * from ogrenci_sicil_tbl WHERE numarasi = " & ogr_no & ""
@@ -55,12 +75,16 @@ Public Class veli_bilgileri
             ad = satir1("adi").ToString
             soyad = satir1("soyadi").ToString
 
-           
+             ogrenci_frm.ogrenci_adi_txt.Text = ad
+            ogrenci_frm.ogrenci_soyadi_txt.Text = soyad
+        Catch
+            MsgBox("Lütfen geçerli değerler giriniz!")
+            ogrenci_frm.ogrenci_adi_txt.Text = ""
+            ogrenci_frm.ogrenci_soyadi_txt.Text = ""
+            ogrenci_frm.veli_ogr_no_txt.Focus()
+        Finally
             baglan()
-        
-        
-        //çağrı try catchler
-        
+        End Try
     End Sub
     
      Sub kontrol()
@@ -109,10 +133,30 @@ Public Class veli_bilgileri
         Dim adapt As New SqlDataAdapter(sql, baglanti)
         Dim ds As New DataSet()
         adapt.Fill(ds, "VeliListesi")
+        ogrenci_frm.veli_sicil_grd.DataSource = ds.Tables("VeliListesi")
+        ogrenci_frm.veli_sicil_grd.Refresh()
+        ogrenci_frm.veli_sicil_grd.Columns(0).HeaderText = "Öğrenci Numarası"
+        ogrenci_frm.veli_sicil_grd.Columns(1).HeaderText = "Veli TC NO"
+        ogrenci_frm.veli_sicil_grd.Columns(2).HeaderText = "Veli Adı"
+        ogrenci_frm.veli_sicil_grd.Columns(3).HeaderText = "Veli Soyadı"
+        ogrenci_frm.veli_sicil_grd.Columns(4).HeaderText = "Yakınlığı"
+        ogrenci_frm.veli_sicil_grd.Columns(5).HeaderText = "Mesleği"
+        ogrenci_frm.veli_sicil_grd.Columns(6).HeaderText = "Geliri"
+        ogrenci_frm.veli_sicil_grd.Columns(7).HeaderText = "Ev Adresi"
+        ogrenci_frm.veli_sicil_grd.Columns(8).HeaderText = "Ev İlçesi"
+        ogrenci_frm.veli_sicil_grd.Columns(9).HeaderText = "Ev İli"
+        ogrenci_frm.veli_sicil_grd.Columns(10).HeaderText = "Ev Posta Kodu"
+        ogrenci_frm.veli_sicil_grd.Columns(11).HeaderText = "Ev Telefonu"
+        ogrenci_frm.veli_sicil_grd.Columns(12).HeaderText = "Cep Telefonu"
+        ogrenci_frm.veli_sicil_grd.Columns(13).HeaderText = "İş Telefonu"
+        ogrenci_frm.veli_sicil_grd.Columns(14).HeaderText = "Fax"
+        ogrenci_frm.veli_sicil_grd.Columns(15).HeaderText = "İş Adresi"
+        ogrenci_frm.veli_sicil_grd.Columns(16).HeaderText = "İş İlçesi"
+        ogrenci_frm.veli_sicil_grd.Columns(17).HeaderText = "İş İli"
+        ogrenci_frm.veli_sicil_grd.Columns(18).HeaderText = "İş Posta Kodu"
+        ogrenci_frm.veli_sicil_grd.Columns(19).HeaderText = "E-Mail"
         
-        
-        //çağrı
-        
+
         
     End Sub
     
@@ -145,7 +189,187 @@ Public Class veli_bilgileri
         End
     End Sub
     
-    
-    // çağrı değişken tanımlamaları
-    
-    End Class
+   Public Property o_no()
+        Get
+            Return ogr_no
+        End Get
+        Set(ByVal value)
+            ogr_no = value
+        End Set
+    End Property
+
+    Public Property v_no()
+        Get
+            Return veli_tcno
+        End Get
+        Set(ByVal value)
+            veli_tcno = value
+        End Set
+    End Property
+
+    Public Property v_ad()
+        Get
+            Return veli_ad
+        End Get
+        Set(ByVal value)
+            veli_ad = value
+        End Set
+    End Property
+
+    Public Property v_soyad()
+        Get
+            Return veli_soyad
+        End Get
+        Set(ByVal value)
+            veli_soyad = value
+        End Set
+    End Property
+
+    Public Property v_yakinligi()
+        Get
+            Return veli_yakinligi
+        End Get
+        Set(ByVal value)
+            veli_yakinligi = value
+        End Set
+    End Property
+
+    Public Property v_meslegi()
+        Get
+            Return veli_meslegi
+        End Get
+        Set(ByVal value)
+            veli_meslegi = value
+        End Set
+    End Property
+
+    Public Property v_geliri()
+        Get
+            Return veli_geliri
+        End Get
+        Set(ByVal value)
+            veli_geliri = value
+        End Set
+    End Property
+
+    Public Property v_mail()
+        Get
+            Return veli_mail
+        End Get
+        Set(ByVal value)
+            veli_mail = value
+        End Set
+    End Property
+
+    Public Property v_adres()
+        Get
+            Return veli_adres
+        End Get
+        Set(ByVal value)
+            veli_adres = value
+        End Set
+    End Property
+
+    Public Property v_il()
+        Get
+            Return veli_il
+        End Get
+        Set(ByVal value)
+            veli_il = value
+        End Set
+    End Property
+
+
+    Public Property v_ilce()
+        Get
+            Return veli_ilce
+        End Get
+        Set(ByVal value)
+            veli_ilce = value
+        End Set
+    End Property
+
+    Public Property v_posta()
+        Get
+            Return veli_posta
+        End Get
+        Set(ByVal value)
+            veli_posta = value
+        End Set
+    End Property
+
+    Public Property v_tel()
+        Get
+            Return veli_tel
+        End Get
+        Set(ByVal value)
+            veli_tel = value
+        End Set
+    End Property
+
+    Public Property v_is_adres()
+        Get
+            Return veli_is_adres
+        End Get
+        Set(ByVal value)
+            veli_is_adres = value
+        End Set
+    End Property
+
+    Public Property v_is_il()
+        Get
+            Return veli_is_il
+        End Get
+        Set(ByVal value)
+            veli_is_il = value
+        End Set
+    End Property
+
+
+    Public Property v_is_ilce()
+        Get
+            Return veli_is_ilce
+        End Get
+        Set(ByVal value)
+            veli_is_ilce = value
+        End Set
+    End Property
+
+    Public Property v_is_posta()
+        Get
+            Return veli_is_posta
+        End Get
+        Set(ByVal value)
+            veli_is_posta = value
+        End Set
+    End Property
+
+    Public Property v_is_tel()
+        Get
+            Return veli_is_tel
+        End Get
+        Set(ByVal value)
+            veli_is_tel = value
+        End Set
+    End Property
+    Public Property v_is_fax()
+        Get
+            Return veli_is_fax
+        End Get
+        Set(ByVal value)
+            veli_is_fax = value
+        End Set
+    End Property
+
+    Public Property v_cep_tel()
+        Get
+            Return veli_cep_tel
+        End Get
+        Set(ByVal value)
+            veli_cep_tel = value
+        End Set
+    End Property
+End Class
+
+
+
