@@ -13,7 +13,15 @@ Public Class prog
     Private com As New SqlCommand()
     
     Sub isim_ata()
-       //çağrı
+        Dim a As Integer
+        a = (ogrenci_frm.prog_kodu_txt.Text)
+        If a = 1 Then g = "EA1"
+        If a = 2 Then g = "SAY1"
+        If a = 3 Then g = "SOZ1"
+        If a = 4 Then g = "EA2"
+        If a = 5 Then g = "SAY2"
+        If a = 6 Then g = "SOZ2"
+        ogrenci_frm.prog_adi_txt.Text = g
     End Sub
     
     Sub baglan()
@@ -48,13 +56,32 @@ Public Class prog
             soyad = satir1("soyadi").ToString
             derskodu = satir1("b_kodu").ToString
             
+       ogrenci_frm.prog_ogr_adi_txt.Text = ad
+            ogrenci_frm.prog_ogr_soyadi_txt.Text = soyad
+            ogrenci_frm.prog_kodu_txt.Text = derskodu
+        Catch
+            ogrenci_frm.prog_ogr_adi_txt.Text = ""
+            ogrenci_frm.prog_ogr_soyadi_txt.Text = ""
+            ogrenci_frm.prog_kodu_txt.Text = ""
+            ogrenci_frm.prog_adi_txt.Text = ""
+            MsgBox("Lütfen geçerli değerler giriniz!")
+            ogrenci_frm.prog_ogr_no_txt.Focus()
+        Finally
             baglan()
-     
-        //çağrı try catch
+        End Try
+
 
     End Sub
-    
-    
-    // çağrı değişken ataması
-    
+
+
+    Public Property ogrenci_nosu()
+        Get
+            Return prog_o_no
+        End Get
+        Set(ByVal value)
+            prog_o_no = value
+        End Set
+    End Property
+
 End Class
+
