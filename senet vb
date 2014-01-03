@@ -35,7 +35,16 @@ Public Class senet
         ogrenci_frm.senet_grd.DataSource = ds.Tables("senet_liste")
         ogrenci_frm.senet_grd.Refresh()
         
-        //çağrı
+    ogrenci_frm.senet_grd.Columns(0).HeaderText = "Ögrenci Numarası"
+        ogrenci_frm.senet_grd.Columns(1).HeaderText = "Kurs Ücreti"
+        ogrenci_frm.senet_grd.Columns(2).HeaderText = "İndirim"
+        ogrenci_frm.senet_grd.Columns(3).HeaderText = "Toplam Tutar"
+        ogrenci_frm.senet_grd.Columns(4).HeaderText = "Senet Ödeme Tarihi"
+        ogrenci_frm.senet_grd.Columns(5).HeaderText = "Senet Numarası"
+        ogrenci_frm.senet_grd.Columns(6).HeaderText = "Kayıt Tarihi"
+        ogrenci_frm.senet_grd.Columns(7).HeaderText = "Vade Sayısı"
+        ogrenci_frm.senet_grd.Columns(8).HeaderText = "Aylık Ödeme Miktarı"
+        ogrenci_frm.senet_grd.Columns(9).HeaderText = "Ödenme Durumu"
         
                 
     End Sub
@@ -55,9 +64,11 @@ Public Class senet
         ogrenci_frm.senet_grd.Refresh()
 
     End Sub
-    
      Sub temizle()
-     //çağrı
+        ogrenci_frm.senet_ogr_no_txt.Text = ""
+        ogrenci_frm.senet_k_ucret_txt.Text = ""
+        ogrenci_frm.senet_indirim_txt.Text = ""
+        ogrenci_frm.senet_vadesay_txt.Text = ""
      End Sub
     
     
@@ -79,7 +90,7 @@ Public Class senet
     End Sub
     
     Sub textaktar()
-       
+       Try
             sql = "SELECT * from ogrenci_sicil_tbl WHERE numarasi = " & senet_o_no & ""
             Dim satir1 As DataRow
             Dim adapt As New SqlDataAdapter(sql, baglanti)
@@ -87,11 +98,16 @@ Public Class senet
             adapt.Fill(ds, "ogrenci")
             satir1 = ds.Tables("ogrenci").Rows(0)
             ad = satir1("adi").ToString
-            
+            ogrenci_frm.senet_ogr_ad_txt.Text = ad
+            ogrenci_frm.senet_ogr_soyad_txt.Text = soyad
+        Catch
+            ogrenci_frm.senet_ogr_ad_txt.Text = ""
+            ogrenci_frm.senet_ogr_soyad_txt.Text = ""
+            MsgBox("Lütfen geçerli değerler giriniz!")
+            ogrenci_frm.senet_ogr_no_txt.Focus()
+        Finally
             baglan()
-        
-   //çağrı try catch olayları
-   
+        End Try
     End Sub
     
     
@@ -115,7 +131,71 @@ Public Class senet
  
     End Sub
     
-     // değişken tanımlamalrı çağrı
     
-    End Class
+    Public Property senet_ogr_nosu()
+        Get
+            Return senet_o_no
+        End Get
+        Set(ByVal value)
+            senet_o_no = value
+        End Set
+    End Property
+    Public Property k_ucreti()
+        Get
+            Return kurs_ucreti
+        End Get
+        Set(ByVal value)
+            kurs_ucreti = value
+        End Set
+    End Property
+    Public Property v_sayisi()
+        Get
+            Return vade_sayisi
+        End Get
+        Set(ByVal value)
+            vade_sayisi = value
+        End Set
+    End Property
+    Public Property senet_indirimi()
+        Get
+            Return indirim
+        End Get
+        Set(ByVal value)
+            indirim = value
+        End Set
+    End Property
+    Public Property i_v_tarihi()
+        Get
+            Return ilk_vade_tarihi
+        End Get
+        Set(ByVal value)
+            ilk_vade_tarihi = value
+        End Set
+    End Property
+    Public Property tarihi()
+        Get
+            Return tarih
+        End Get
+        Set(ByVal value)
+            tarih = value
+        End Set
+    End Property
+    Public Property top_senet_tutari()
+        Get
+            Return top_s_tutari
+        End Get
+        Set(ByVal value)
+            top_s_tutari = value
+        End Set
+    End Property
+    Public Property tutar()
+        Get
+            Return tutari
+        End Get
+        Set(ByVal value)
+            tutari = value
+        End Set
+    End Property
+End Class
+
 
