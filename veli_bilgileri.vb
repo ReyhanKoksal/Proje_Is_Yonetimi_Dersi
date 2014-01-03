@@ -27,7 +27,7 @@ Public Class veli_bilgileri
     Public soyad As String
     
     Private sql As String
-    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje; trusted_connection=yes;")
+    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje_dershane; trusted_connection=yes;")
     Private com As New SqlCommand()
     
     Sub baglan()
@@ -36,6 +36,12 @@ Public Class veli_bilgileri
         baglanti.Open()
         com.ExecuteNonQuery()
         baglanti.Close()
+    End Sub
+    
+    Sub temizle() 
+    
+    //çağrı
+    
     End Sub
 
     Sub textaktar()
@@ -53,7 +59,7 @@ Public Class veli_bilgileri
             baglan()
         
         
-        //çağrı
+        //çağrı try catchler
         
     End Sub
     
@@ -134,5 +140,12 @@ Public Class veli_bilgileri
         ogrenci_frm.veli_sicil_grd.DataSource = ds.Tables("Veli Listesi")
         ogrenci_frm.veli_sicil_grd.Refresh()
     End Sub
+    
+       Sub cikis()
+        End
+    End Sub
+    
+    
+    // çağrı değişken tanımlamaları
     
     End Class
