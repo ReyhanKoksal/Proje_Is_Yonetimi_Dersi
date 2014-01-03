@@ -40,10 +40,16 @@ Sub kontrol()
         End Try
     End Sub
     
-    Sub isim_ata()
-    
-    // çağrı
-    
+   Sub isim_ata()
+        Dim a As Integer
+        a = (ogrenci_frm.dev_sinifii_no_txt.Text)
+        If a = 1 Then g = "EA1"
+        If a = 2 Then g = "SAY1"
+        If a = 3 Then g = "SOZ1"
+        If a = 4 Then g = "EA2"
+        If a = 5 Then g = "SAY2"
+        If a = 6 Then g = "SOZ2"
+        ogrenci_frm.dev_sinifi_txt.Text = g
     End Sub
     
     Sub listele()
@@ -52,11 +58,13 @@ Sub kontrol()
         Dim ds As New DataSet()
         adapt.Fill(ds, "Devamsizlik")
         ogrenci_frm.dev_liste.DataSource = ds.Tables("Devamsizlik")
-        
-        
-        
-      //çağrı
-      
+        ogrenci_frm.dev_liste.Refresh()
+        ogrenci_frm.dev_liste.Columns(0).HeaderText = "Numarası"
+        ogrenci_frm.dev_liste.Columns(1).HeaderText = "Adı"
+        ogrenci_frm.dev_liste.Columns(2).HeaderText = "Soyadı"
+        ogrenci_frm.dev_liste.Columns(3).HeaderText = "Sınıfı"
+        ogrenci_frm.dev_liste.Columns(4).HeaderText = "Tarihi"
+        ogrenci_frm.dev_liste.Columns(5).HeaderText = "Türü"
       
     End Sub
     
@@ -91,20 +99,69 @@ Sub kontrol()
             ad = satir1("adi").ToString
             soyad = satir1("soyadi").ToString
             derskodu = satir1("b_kodu").ToString
-           
+        ogrenci_frm.dev_adi_txt.Text = ad
+            ogrenci_frm.dev_soyadi_txt.Text = soyad
+            ogrenci_frm.dev_sinifii_no_txt.Text = derskodu
+        Catch
+            ogrenci_frm.dev_adi_txt.Text = ""
+            ogrenci_frm.dev_soyadi_txt.Text = ""
+            ogrenci_frm.dev_sinifii_no_txt.Text = ""
+            ogrenci_frm.dev_sinifi_txt.Text = ""
+            MsgBox("Lütfen geçerli değerler giriniz!")
+            ogrenci_frm.dev_ogr_no_txt.Focus()
+        Finally
             baglan()
-        
-        
-        
-        // çağrı 
-        
-        
+        End Try
     End Sub
-    
-    
-    // çağrı değişken atamaları
-    
-    End Class
-    
+    Public Property ogrenci_nosu()
+        Get
+            Return o_no
+        End Get
+        Set(ByVal value)
+            o_no = value
+        End Set
+    End Property
+    Public Property devamsizlik_tarihi()
+        Get
+            Return dev_tarihi
+        End Get
+        Set(ByVal value)
+            dev_tarihi = value
+        End Set
+    End Property
+    Public Property devamsizlik_turu()
+        Get
+            Return dev_turu
+        End Get
+        Set(ByVal value)
+            dev_turu = value
+        End Set
+    End Property
+    Public Property adi()
+        Get
+            Return ad
+        End Get
+        Set(ByVal value)
+            ad = value
+        End Set
+    End Property
+    Public Property soyadi()
+        Get
+            Return soyad
+        End Get
+        Set(ByVal value)
+            soyad = value
+        End Set
+    End Property
+    Public Property sinifi()
+        Get
+            Return g
+        End Get
+        Set(ByVal value)
+            g = value
+        End Set
+    End Property
+End Class
+
     
     
