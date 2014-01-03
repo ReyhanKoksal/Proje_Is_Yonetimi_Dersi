@@ -10,9 +10,11 @@ Public Class Devamsizlik
     Public derskodu As Integer
     Public no As integer
     Public soyad As String
-     Private sql As String
-    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje; trusted_connection=yes;")
+    Private sql As String
+    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje_dershane; trusted_connection=yes;")
     Private com As New SqlCommand()
+    
+    
     Sub baglan()
         com.Connection = baglanti
         com.CommandText = sql
@@ -20,6 +22,7 @@ Public Class Devamsizlik
         com.ExecuteNonQuery()
         baglanti.Close()
     End Sub
+    
 Sub kontrol()
         no = CInt(ogrenci_frm.dev_ogr_no_txt.Text)
         sql = "select * from devamsizlik_tbl where ogr_no = '" & o_no & "'"
@@ -37,6 +40,11 @@ Sub kontrol()
         End Try
     End Sub
     
+    Sub isim_ata()
+    
+    // çağrı
+    
+    End Sub
     
     Sub listele()
         sql = "select * from devamsizlik_tbl"
@@ -68,7 +76,11 @@ Sub kontrol()
         listele()
     End Sub
     
-     Sub textaktar()
+        Sub cikis()
+        End
+    End Sub
+    
+    Sub textaktar()
        
             sql = "SELECT * from ogrenci_sicil_tbl WHERE numarasi = " & o_no & ""
             Dim satir1 As DataRow
@@ -89,6 +101,8 @@ Sub kontrol()
         
     End Sub
     
+    
+    // çağrı değişken atamaları
     
     End Class
     
