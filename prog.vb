@@ -9,8 +9,12 @@ Public Class prog
     Public derskodu As Integer
     Public soyad As String
      Private sql As String
-    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje; trusted_connection=yes;")
+    Private baglanti As New SqlConnection("server=.\SQLEXPRESS; database=proje_dershane; trusted_connection=yes;")
     Private com As New SqlCommand()
+    
+    Sub isim_ata()
+       //çağrı
+    End Sub
     
     Sub baglan()
         com.Connection = baglanti
@@ -46,9 +50,11 @@ Public Class prog
             
             baglan()
      
-        //çağrı
+        //çağrı try catch
 
     End Sub
     
+    
+    // çağrı değişken ataması
     
 End Class
